@@ -287,6 +287,50 @@ SELECT * FROM Funcionarios;
 ![Screenshot_17](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/fd5b0257-f02d-466c-a384-42709d339a12)
 ![Screenshot_18](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/d678c89f-81c5-4fc4-83c0-59cf1e38b446)
 
+```sql
+SELECT * FROM Estoque;
+```
+![Screenshot_19](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/89e40835-5504-4597-8493-6e8ffbd09a4b)
+![Screenshot_20](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/799ec099-7ab8-4ba3-8b4a-83ad0ecbce1a)
+![Screenshot_21](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/0752ea6d-4bee-4c60-a65d-6849a54c8a4e)
+![Screenshot_22](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/8d51f8cf-593b-4724-b6ef-9622bdb3684d)
+
+```sql
+SELECT * FROM Clientes;
+```
+![Screenshot_23](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/a5596a7e-a1a9-4a51-a01d-ac333004ef99)
+![Screenshot_24](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/904a7b46-2893-4450-bae4-42c5c0fadea8)
+![Screenshot_25](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/13ebc0ac-e0b0-4bbb-88de-bd79e6994a43)
+![Screenshot_26](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/a8ed12bc-ef15-464b-aabb-512cdb2f62f4)
+
+```sql
+SELECT * FROM Produtos;
+```
+![Screenshot_27](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/880f0041-08f1-4869-9ef7-c2e00d7a3003)
+![Screenshot_28](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/72bfb443-9168-43d0-bc73-a65b7e53633f)
+![Screenshot_29](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/a883beca-befc-4577-b5c6-f7ffd8d30ae6)
+![Screenshot_30](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/f82a8d41-6f7d-4dec-9267-c183af7e2afa)
+
+```sql
+SELECT * FROM Vendas;
+```
+![Screenshot_31](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/f5810490-d2e3-4e62-9fdd-21ed15395c4c)
+![Screenshot_32](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/b88f4c6c-65f4-42c1-ac71-9b0c55ae6c79)
+![Screenshot_33](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/467d02b2-2da7-4d46-9d28-4475cf6b2fdd)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
