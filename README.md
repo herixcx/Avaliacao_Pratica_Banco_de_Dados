@@ -24,13 +24,23 @@
     data_contratacao DATE
 );
 
-CREATE TABLE Estoque (
-    id_estoque INT PRIMARY KEY,
-    id_produto INT,
-    id_funcionario INT,
-    quant_produto INT,
-    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
-    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+CREATE TABLE Endereco (
+    id_endereco INT PRIMARY KEY,
+    rua VARCHAR(100),
+    numero INT,
+    cidade VARCHAR(50),
+    estado VARCHAR(50),
+    cep VARCHAR(10)
+);
+
+CREATE TABLE Email (
+    id_email INT PRIMARY KEY,
+    email VARCHAR(100)
+);
+
+CREATE TABLE Telefone (
+    id_telefone INT PRIMARY KEY,
+    telefone VARCHAR(15)
 );
 
 CREATE TABLE Clientes (
@@ -54,6 +64,15 @@ CREATE TABLE Produtos (
     FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
 );
 
+CREATE TABLE Estoque (
+    id_estoque INT PRIMARY KEY,
+    id_produto INT,
+    id_funcionario INT,
+    quant_produto INT,
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+);
+
 CREATE TABLE Vendas (
     id_compra INT PRIMARY KEY,
     id_cliente INT,
@@ -65,31 +84,6 @@ CREATE TABLE Vendas (
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
     FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
     FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
-);
-
-CREATE TABLE Funcionarios_Clientes (
-    id_funcionario INT,
-    id_cliente INT,
-    PRIMARY KEY (id_funcionario, id_cliente),
-    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario),
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
-);
-
-CREATE TABLE Funcionarios_Estoque (
-    id_funcionario INT,
-    id_estoque INT,
-    PRIMARY KEY (id_funcionario, id_estoque),
-    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario),
-    FOREIGN KEY (id_estoque) REFERENCES Estoque(id_estoque)
-);
-
-CREATE TABLE Produtos_Vendas (
-    id_produto INT,
-    id_venda INT,
-    quantidade INT,
-    PRIMARY KEY (id_produto, id_venda),
-    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
-    FOREIGN KEY (id_venda) REFERENCES Vendas(id_compra)
 );
 ```
 
