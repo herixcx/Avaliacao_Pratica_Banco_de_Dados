@@ -11,4 +11,5 @@
 
 # ● 3- Modelagem Lógica
 
-![DER (1)](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/7f808d15-c2c8-45bf-a329-f756dc9325ee)
+![DER (2)](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/3ea9c870-a794-4a5c-b9da-a34b4421019c)
+
