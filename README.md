@@ -374,7 +374,7 @@ SELECT id_compra, id_cliente, id_produto, id_funcionario, data_compra, valor_tot
 ![updatevendas](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/0de0291b-2300-43ba-ae18-06ac8b6e8c1e)
 
 
-DELTE:
+DELETE:
 
 ```sql
 DELETE FROM Funcionarios
@@ -426,6 +426,127 @@ SELECT *
 FROM Vendas;
 ```
 ![deletevendas](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/2e5d8f10-cb38-4925-94b9-60299e0a3d62)
+
+# ● 7- Relatórios:
+
+● 1- Listar todos os funcionários com seus respectivos cargos e salários, ordenados pelo salário em ordem decrescente:
+
+```sql
+SELECT nome, cargo, salario
+FROM Funcionarios
+ORDER BY salario DESC;
+```
+![sal![salario2](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/41d365aa-f6dc-4d29-9b9c-2e07fbb6fdf4)
+ario1](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/d401ed6d-0eb7-4c14-b208-ab305b9263b3)
+
+● 2- Listar todos os clientes com seus respectivos endereços e emails:
+
+```sql
+SELECT c.nome, e.rua, e.numero, e.cidade, e.estado, e.cep, em.email
+FROM Clientes c
+JOIN Endereco e ON c.id_endereco = e.id_endereco
+JOIN Email em ON c.id_email = em.id_email;
+```
+![email1](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/10a9d891-f337-4a46-b34d-56258acfb535)
+![email2](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/efe3477e-6038-4899-9e99-e10ca87bec6d)
+
+● 3- Listar todos os produtos com seus respectivos títulos, artistas e gêneros, filtrando apenas os produtos com preço superior a $50.00:
+
+```sql
+SELECT titulo, artista, genero, preco
+FROM Produtos
+WHERE preco > 50.00;
+```
+![preco1](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/4781d904-5a85-4519-a441-014890013e31)
+
+● 4- Listar todas as vendas com detalhes de cliente, produto e funcionário responsável, ordenadas pela data de compra em ordem crescente:
+
+```sql
+SELECT v.id_compra, c.nome AS cliente, p.titulo AS produto, f.nome AS funcionario, v.data_compra, v.valor_total
+FROM Vendas v
+JOIN Clientes c ON v.id_cliente = c.id_cliente
+JOIN Produtos p ON v.id_produto = p.id_produto
+JOIN Funcionarios f ON v.id_funcionario = f.id_funcionario
+ORDER BY v.data_compra ASC;
+```
+![vendas3](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/22a7b35e-2687-41a4-9bfd-5c2a452e6b3f)
+
+● 5- Listar todos os produtos em estoque com detalhes de quantidade, título, artista e preço, filtrando apenas os produtos com quantidade disponível maior que 0:
+
+```sql
+SELECT e.quant_produto, p.titulo, p.artista, p.preco
+FROM Estoque e
+JOIN Produtos p ON e.id_produto = p.id_produto
+WHERE e.quant_produto > 0;
+```
+![prodestoque](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/1d9ab229-b27c-4fa7-ae35-b888fd85de60)
+
+● 6- Listar todos os clientes que fizeram compras nos últimos 30 dias, com detalhes de nome, email e data da última compra:
+
+```sql
+SELECT c.nome, em.email, MAX(v.data_compra) AS ultima_compra
+FROM Clientes c
+JOIN Vendas v ON c.id_cliente = v.id_cliente
+JOIN Email em ON c.id_email = em.id_email
+WHERE v.data_compra >= DATEADD(DAY, -30, GETDATE())
+GROUP BY c.nome, em.email;
+```
+![vendas30dias](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/9092e245-fbc2-4090-901c-fe0fef7e8835)
+
+● 7- Listar todos os funcionários que ainda não fizeram vendas, com detalhes de nome e cargo:
+
+```sql
+SELECT f.nome, f.cargo
+FROM Funcionarios f
+LEFT JOIN Vendas v ON f.id_funcionario = v.id_funcionario
+WHERE v.id_compra IS NULL;
+```
+![funcvendas](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/a10625f7-f7be-443f-9dba-2e4ebd4a5aff)
+
+● 8- Listar todos os produtos vendidos em uma determinada categoria de gênero, com detalhes de título, artista, preço e quantidade vendida, ordenados pela quantidade vendida em ordem decrescente:
+
+```sql
+SELECT p.titulo, p.artista, p.preco, SUM(v.quant_produto) AS quantidade_vendida
+FROM Produtos p
+JOIN Vendas v ON p.id_produto = v.id_produto
+WHERE p.genero = 'Pop' -- Substitua 'Rock' pelo gênero desejado
+GROUP BY p.titulo, p.artista, p.preco
+ORDER BY quantidade_vendida DESC;
+```
+![quantvendas](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/77841969-d79a-45f0-bb0a-e6197fc428a7)
+
+● 9- Listar todos os clientes que fizeram compras com valor total superior a $29,99, com detalhes de nome, valor total gasto e data da última compra:
+
+```sql
+SELECT c.nome, SUM(v.valor_total) AS valor_total_gasto, MAX(v.data_compra) AS ultima_compra
+FROM Clientes c
+JOIN Vendas v ON c.id_cliente = v.id_cliente
+GROUP BY c.nome
+HAVING SUM(v.valor_total) > 100.00;
+```
+![valormaiorq](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/e1628de1-79db-47a9-82a1-2085f33708c4)
+
+● 10- Listar todos os produtos que estão em estoque e que foram cadastrados por funcionários do cargo 'Gerente', com detalhes de título, artista, gênero e quantidade em estoque:
+
+```sql
+SELECT p.titulo, p.artista, p.genero, e.quant_produto
+FROM Produtos p
+JOIN Estoque e ON p.id_produto = e.id_produto
+JOIN Funcionarios f ON p.id_funcionario = f.id_funcionario
+WHERE f.cargo = 'Gerente';                                    
+```
+![produto3](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/c4c3abc6-42ed-46b3-ae4e-260a1ed484d4)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
