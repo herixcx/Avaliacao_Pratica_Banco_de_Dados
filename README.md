@@ -23,6 +23,74 @@
     salario DECIMAL(20,2),
     data_contratacao DATE
 );
+
+CREATE TABLE Estoque (
+    id_estoque INT PRIMARY KEY,
+    id_produto INT,
+    id_funcionario INT,
+    quant_produto INT,
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+);
+
+CREATE TABLE Clientes (
+    id_cliente INT PRIMARY KEY,
+    nome VARCHAR(70),
+    id_endereco INT,
+    id_email INT,
+    id_telefone INT,
+    FOREIGN KEY (id_endereco) REFERENCES Endereco(id_endereco),
+    FOREIGN KEY (id_email) REFERENCES Email(id_email),
+    FOREIGN KEY (id_telefone) REFERENCES Telefone(id_telefone)
+);
+
+CREATE TABLE Produtos (
+    id_produto INT PRIMARY KEY,
+    titulo VARCHAR(70),
+    artista VARCHAR(70),
+    genero VARCHAR(50),
+    preco DECIMAL(10, 2),
+    id_funcionario INT,
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+);
+
+CREATE TABLE Vendas (
+    id_compra INT PRIMARY KEY,
+    id_cliente INT,
+    id_produto INT,
+    id_funcionario INT,
+    data_compra DATE,
+    valor_total DECIMAL(10, 2),
+    quant_produto INT,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario)
+);
+
+CREATE TABLE Funcionarios_Clientes (
+    id_funcionario INT,
+    id_cliente INT,
+    PRIMARY KEY (id_funcionario, id_cliente),
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario),
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+);
+
+CREATE TABLE Funcionarios_Estoque (
+    id_funcionario INT,
+    id_estoque INT,
+    PRIMARY KEY (id_funcionario, id_estoque),
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionarios(id_funcionario),
+    FOREIGN KEY (id_estoque) REFERENCES Estoque(id_estoque)
+);
+
+CREATE TABLE Produtos_Vendas (
+    id_produto INT,
+    id_venda INT,
+    quantidade INT,
+    PRIMARY KEY (id_produto, id_venda),
+    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto),
+    FOREIGN KEY (id_venda) REFERENCES Vendas(id_compra)
+);
 ```
 
 
