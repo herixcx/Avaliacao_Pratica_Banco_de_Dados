@@ -278,6 +278,14 @@ VALUES
     (20, 1, 2, 3, '2023-04-13', 49.99, 1);
 ```
 
+# ● 6- CRUD
+READ:
+```sql
+SELECT * FROM Funcionarios;
+```
+![Screenshot_16](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/ec9ca812-fdd4-46c7-968c-db25b082ab5f)
+![Screenshot_17](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/fd5b0257-f02d-466c-a384-42709d339a12)
+![Screenshot_18](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/d678c89f-81c5-4fc4-83c0-59cf1e38b446)
 
 
 
