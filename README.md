@@ -13,3 +13,16 @@
 
 ![DER (2)](https://github.com/herixcx/Avaliacao_Pratica_Banco_de_Dados/assets/162808394/3ea9c870-a794-4a5c-b9da-a34b4421019c)
 
+# ● 4- Modelagem Física
+
+```sql
+    CREATE TABLE Funcionarios (
+    id_funcionario INT PRIMARY KEY,
+    nome VARCHAR(70),
+    cargo VARCHAR(70),
+    salario DECIMAL(20,2),
+    data_contratacao DATE
+);
+```
+
+
